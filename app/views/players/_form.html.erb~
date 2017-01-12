@@ -16,6 +16,11 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :money %>
+    <%= f.number_field :money %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,2 +1,11 @@
 class Result < ApplicationRecord
+  belongs_to :player
+  belongs_to :round
+
+  def calculate_gain
+    if Game.first.is_over_32c == TRUE
+      puts 'Holi'
+    end
+  end
+
 end
