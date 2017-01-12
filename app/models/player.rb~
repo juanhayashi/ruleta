@@ -4,8 +4,34 @@ class Player < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :money
 
+  after_initialize :init
+
+  def init
+    self.money ||= 10000
+  end
+
   def add_money
     self.money = self.money + 10000
+    self.save
+  end
+
+  def get_bet
+    if money > 1000
+      if Game.first.is_over_32c
+        bet = self.money * rand(4..10) / 100
+      else 
+        bet = self.money * rand(8..15) / 100 
+      end
+    else 
+      self.money = self.money - bet
+      self.save
+      bet = money
+    end
+    return bet
+  end
+
+  def gain_money(gain)
+    self.money = self.money + gain
     self.save
   end
 

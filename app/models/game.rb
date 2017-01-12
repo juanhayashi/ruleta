@@ -6,26 +6,39 @@ class Game < ApplicationRecord
   end
 
   def new_round
-    round = Round.create(:game_id => Game.first.id)
-    round.players = Player.all
-    round.players.each do |p|
-      #Ver apuesta
-      if p.money > 1000
-        if Game.first.is_over_32c
-          #Ajustar apuesta y ver porcentaje
-        else 
-          #Apuesta sin ajustar
-        end 
-      else
-        bet = p.money
-      end
+
+    color_ruleta = {
+      "verde" => 2,
+      "negro" => 49,
+      "rojo" => 49
+    }
+
+    colores = Pickup.new(color_ruleta)
+
+    round = Round.create(:game_id => self.id)
+    players = Player.where("money > ?", 0)
+
+    #Iterar en jugadores
+    players.each do |p|
       
+      #Ver cantidad apuesta
+      bet = p.get_bet
+      puts bet
       #Color apostado
-      #TODO: Modificar model, random para color
-     
-      #Definir resultado ronda
-      #TODO: Random para color
+      color_bet = colores.pick
+      puts color_bet
+      #Crear resultado
+      Result.create(:bet => bet, :color_bet => color_bet, :player_id => p.id, :round_id => round.id)
 
     end
+
+    #Definir resultado ronda
+    round.resultado_ruleta = colores.pick
+    round.save
+
+    round.results.each do |r|
+      r.calculate_gain
+    end
+
   end
 end

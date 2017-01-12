@@ -15,4 +15,24 @@ class Player < ApplicationRecord
     self.save
   end
 
+  def get_bet
+    if money > 1000
+      if Game.first.is_over_32c
+        bet = self.money * rand(4..10) / 100
+      else 
+        bet = self.money * rand(8..15) / 100 
+      end
+    else 
+      bet = money
+    end
+    self.money = self.money - bet
+    self.save
+    return bet
+  end
+
+  def gain_money(gain)
+    self.money = self.money + gain
+    self.save
+  end
+
 end
