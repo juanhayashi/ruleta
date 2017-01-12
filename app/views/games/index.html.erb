@@ -1,0 +1,27 @@
+<h1>Resultados Ruleta</h1>
+<p>A continuacion se presentan los resultados de la simulación de ruleta</p>
+
+<% @rounds.each do |round| %>
+	<p> Ronda N° <%= round.id %> </p>
+	<p> Resultado de la ronda: Negro </p>
+	<table>
+		<thead>
+			<tr>
+				<th>Jugador</th>
+				<th>Cant. Apuesta</th>
+				<th>Color Apuesta</th>
+				<th>Ganancia</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @results.where(:round_id => round.id).each do |result| %>
+				<tr>
+					<td><%= result.player.name %></td>
+					<td><%= result.bet %></td>
+					<td>Negro</td>
+					<td><%= result.gain %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
