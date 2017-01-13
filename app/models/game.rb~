@@ -1,4 +1,5 @@
 class Game < ApplicationRecord
+  validate :only_one
   has_many :rounds
   after_initialize :init
 
@@ -15,7 +16,7 @@ class Game < ApplicationRecord
   end
 
   def init
-    self.is_over_32c ||= get_weather
+    self.is_over_32c = get_weather if self.is_over_32c.nil?
   end
 
   def refresh_weather

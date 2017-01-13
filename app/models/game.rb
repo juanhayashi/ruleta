@@ -1,4 +1,5 @@
 class Game < ApplicationRecord
+  validate :only_one
   has_many :rounds
   after_initialize :init
 
@@ -57,6 +58,14 @@ class Game < ApplicationRecord
     round.results.each do |r|
       r.calculate_gain
     end
-
   end
+
+  private
+
+  def only_one
+    if Game.count >= 1
+      errors.add :base, 'Solo puede existir una instancia de este modelo.'
+    end
+  end
+
 end
