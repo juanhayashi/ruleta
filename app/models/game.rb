@@ -1,16 +1,29 @@
 class Game < ApplicationRecord
   has_many :rounds
+  after_initialize :init
 
-  def getWeather
-    #Add weather API
+  def get_weather
+    require 'forecast_io'
+    forecast = ForecastIO.forecast(-33.4691, -70.642, params: { units: 'si', exclude: 'currently,minutely,hourly,alerts,flags'}) #Coords Santiago
+    flag = false
+    
+    #Verificar temperatura proximos 7 dias
+    for d in forecast.daily.data do
+      d.temperatureMax > 32 ? flag = true : nil
+    end
+    return flag
+  end
+
+  def init
+    self.is_over_32c = get_weather
   end
 
   def new_round
 
     color_ruleta = {
-      "verde" => 2,
-      "negro" => 49,
-      "rojo" => 49
+      "Verde" => 2,
+      "Negro" => 49,
+      "Rojo" => 49
     }
 
     colores = Pickup.new(color_ruleta)
@@ -23,10 +36,10 @@ class Game < ApplicationRecord
       
       #Ver cantidad apuesta
       bet = p.get_bet
-      puts bet
+
       #Color apostado
       color_bet = colores.pick
-      puts color_bet
+
       #Crear resultado
       Result.create(:bet => bet, :color_bet => color_bet, :player_id => p.id, :round_id => round.id)
 
@@ -36,6 +49,7 @@ class Game < ApplicationRecord
     round.resultado_ruleta = colores.pick
     round.save
 
+    #Calcula ganancias de cada jugador
     round.results.each do |r|
       r.calculate_gain
     end

@@ -19,8 +19,10 @@ class Result < ApplicationRecord
       self.gain = 0
     end
     puts self.id
-    puts self.player.id
-    self.save
+    puts self.player.name
+    puts self.bet
+    puts self.gain
+    self.update :gain => self.gain
   end
 
 end

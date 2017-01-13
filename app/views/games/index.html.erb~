@@ -3,7 +3,7 @@
 
 <% @rounds.each do |round| %>
 	<p> Ronda N° <%= round.id %> </p>
-	<p> Resultado de la ronda: <%= round.resultado_ruleta %> </p>
+	<p> Resultado de la ronda: Negro </p>
 	<table>
 		<thead>
 			<tr>
@@ -14,11 +14,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% round.results.each do |result| %>
+			<% @results.where(:round_id => round.id).each do |result| %>
 				<tr>
 					<td><%= result.player.name %></td>
 					<td><%= result.bet %></td>
-					<td><%= result.color_bet %></td>
+					<td>Negro</td>
 					<td><%= result.gain %></td>
 				</tr>
 			<% end %>

@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
   def index
-  	@rounds = Round.all
+  	@rounds = Round.all)
   end
 end

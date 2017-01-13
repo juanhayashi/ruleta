@@ -1,6 +1,6 @@
 class Player < ApplicationRecord
   has_many :results
-  has_many :rounds, through: :results
+  has_many :rounds, through: :results, dependent: :destroy
   validates_presence_of :name
   validates_presence_of :money
 
@@ -23,10 +23,10 @@ class Player < ApplicationRecord
         bet = self.money * rand(8..15) / 100 
       end
     else 
-      self.money = self.money - bet
-      self.save
       bet = money
     end
+    self.money = self.money - bet
+    self.save
     return bet
   end
 
