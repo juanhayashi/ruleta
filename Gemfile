@@ -41,6 +41,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   #Use Whenever to schedule tasks in development
   gem 'whenever', :require => false
+  #Use Seed Dump to dump db to seed
+  gem 'seed_dump'
 
 end
 
