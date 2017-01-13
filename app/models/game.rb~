@@ -11,11 +11,15 @@ class Game < ApplicationRecord
     for d in forecast.daily.data do
       d.temperatureMax > 32 ? flag = true : nil
     end
-    return false
+    return flag
   end
 
   def init
-    self.is_over_32c = get_weather
+    self.is_over_32c ||= get_weather
+  end
+
+  def refresh_weather
+    self.update_attributes(:is_over_32c => false)
   end
 
   def new_round

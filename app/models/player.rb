@@ -3,11 +3,10 @@ class Player < ApplicationRecord
   has_many :rounds, through: :results
   validates_presence_of :name
   validates_presence_of :money
-
   after_initialize :init
 
   def init
-    self.money ||= 10000
+    self.money ||= 10000 if self.has_attribute? :money
   end
 
   def add_money

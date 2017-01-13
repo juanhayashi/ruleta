@@ -15,7 +15,11 @@ class Game < ApplicationRecord
   end
 
   def init
-    self.is_over_32c = get_weather
+    self.is_over_32c = get_weather if self.is_over_32c.nil?
+  end
+
+  def refresh_weather
+    self.update_attributes(:is_over_32c => false)
   end
 
   def new_round
