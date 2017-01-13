@@ -2,7 +2,7 @@ Game.create!([
   {id: 1, is_over_32c: true}
 ])
 Round.create!([
-  {game_id: 1, resultado_ruleta: "Negro"}
+  {id: 1, game_id: 1, resultado_ruleta: "Negro"}
 ])
 Player.create!([
   {id: 1, name: "Juan", money: 9000},
