@@ -21,6 +21,7 @@ class Game < ApplicationRecord
 
   def refresh_weather
     self.is_over_32c = get_weather
+    self.save
   end
 
   def new_round
