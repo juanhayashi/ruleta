@@ -20,7 +20,7 @@ class Game < ApplicationRecord
   end
 
   def refresh_weather
-    self.update_attributes(:is_over_32c => false)
+    self.is_over_32c = get_weather
   end
 
   def new_round

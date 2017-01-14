@@ -20,7 +20,7 @@ class Game < ApplicationRecord
   end
 
   def refresh_weather
-    self.update_attributes(:is_over_32c => false)
+    self.update_attributes(:is_over_32c => get_weather)
   end
 
   def new_round
@@ -58,6 +58,14 @@ class Game < ApplicationRecord
     round.results.each do |r|
       r.calculate_gain
     end
-
   end
+
+  private
+
+  def only_one
+    if Game.count >= 1
+      errors.add :base, 'Solo puede existir una instancia de este modelo.'
+    end
+  end
+
 end
