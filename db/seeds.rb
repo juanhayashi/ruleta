@@ -18,19 +18,15 @@ Player.create!([
   {name: "Nolan", money: 12100}
 ])
 Result.create!([
-  {bet: 360, gain: 720, player_id: 1, round_id: 2, color_bet: "Rojo", initial_money: 9000, final_money: 9360},
-  {bet: 744, gain: 0, player_id: 2, round_id: 2, color_bet: "Negro", initial_money: 9300, final_money: 8556},
-  {bet: 480, gain: 0, player_id: 3, round_id: 2, color_bet: "Negro", initial_money: 9600, final_money: 9120},
-  {bet: 665, gain: 0, player_id: 4, round_id: 2, color_bet: "Negro", initial_money: 9500, final_money: 8835},
-  {bet: 450, gain: 900, player_id: 5, round_id: 2, color_bet: "Rojo", initial_money: 9000, final_money: 9450},
-  {bet: 672, gain: 1344, player_id: 6, round_id: 2, color_bet: "Rojo", initial_money: 9600, final_money: 10272},
-  {bet: 630, gain: 0, player_id: 7, round_id: 2, color_bet: "Negro", initial_money: 10500, final_money: 9870},
-  {bet: 763, gain: 1526, player_id: 8, round_id: 2, color_bet: "Rojo", initial_money: 10900, final_money: 11663},
-  {bet: 945, gain: 1890, player_id: 9, round_id: 2, color_bet: "Rojo", initial_money: 10500, final_money: 11445},
-  {bet: 1100, gain: 2200, player_id: 10, round_id: 2, color_bet: "Rojo", initial_money: 11000, final_money: 12100},
-  {bet: 545, gain: 0, player_id: 11, round_id: 2, color_bet: "Negro", initial_money: 10900, final_money: 10355}
-])
-Round.create!([
-  {game_id: 1, resultado_ruleta: "Negro"},
-  {game_id: 1, resultado_ruleta: "Rojo"}
+  {bet: 360, gain: 720, player_id: 1, round_id: 1, color_bet: "Rojo", initial_money: 9000, final_money: 9360},
+  {bet: 744, gain: 0, player_id: 2, round_id: 1, color_bet: "Negro", initial_money: 9300, final_money: 8556},
+  {bet: 480, gain: 0, player_id: 3, round_id: 1, color_bet: "Negro", initial_money: 9600, final_money: 9120},
+  {bet: 665, gain: 0, player_id: 4, round_id: 1, color_bet: "Negro", initial_money: 9500, final_money: 8835},
+  {bet: 450, gain: 900, player_id: 5, round_id: 1, color_bet: "Rojo", initial_money: 9000, final_money: 9450},
+  {bet: 672, gain: 1344, player_id: 6, round_id: 1, color_bet: "Rojo", initial_money: 9600, final_money: 10272},
+  {bet: 630, gain: 0, player_id: 7, round_id: 1, color_bet: "Negro", initial_money: 10500, final_money: 9870},
+  {bet: 763, gain: 1526, player_id: 8, round_id: 1, color_bet: "Rojo", initial_money: 10900, final_money: 11663},
+  {bet: 945, gain: 1890, player_id: 9, round_id: 1, color_bet: "Rojo", initial_money: 10500, final_money: 11445},
+  {bet: 1100, gain: 2200, player_id: 10, round_id: 1, color_bet: "Rojo", initial_money: 11000, final_money: 12100},
+  {bet: 545, gain: 0, player_id: 11, round_id: 1, color_bet: "Negro", initial_money: 10900, final_money: 10355}
 ])
