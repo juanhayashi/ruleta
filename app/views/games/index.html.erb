@@ -8,18 +8,23 @@
 		<thead>
 			<tr>
 				<th>Jugador</th>
+				<th>Cant. Inicial Dinero</th>
 				<th>Cant. Apuesta</th>
 				<th>Color Apuesta</th>
 				<th>Ganancia</th>
+				<th>Cant. Final Dinero</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% round.results.each do |result| %>
 				<tr>
 					<td><%= result.player.name %></td>
+					<td><%= result.initial_money %></td>
 					<td><%= result.bet %></td>
 					<td><%= result.color_bet %></td>
 					<td><%= result.gain %></td>
+					<td><%= result.final_money %></td>
+
 				</tr>
 			<% end %>
 		</tbody>

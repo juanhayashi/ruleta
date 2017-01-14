@@ -39,14 +39,15 @@ class Game < ApplicationRecord
     #Iterar en jugadores
     players.each do |p|
       
-      #Ver cantidad apuesta
+      #Cantidad apuesta
+      initial_money = p.money
       bet = p.get_bet
 
       #Color apostado
       color_bet = colores.pick
 
       #Crear resultado
-      Result.create(:bet => bet, :color_bet => color_bet, :player_id => p.id, :round_id => round.id)
+      Result.create(:bet => bet, :color_bet => color_bet, :player_id => p.id, :round_id => round.id, :initial_money => initial_money)
 
     end
 

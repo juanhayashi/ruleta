@@ -14,7 +14,8 @@ class Result < ApplicationRecord
     else #Perdedor
       self.gain = 0
     end
-    self.update :gain => self.gain
+    self.final_money = self.player.money
+    self.save
   end
 
 end
