@@ -60,6 +60,4 @@ class Game < ApplicationRecord
     end
   end
 
-  private
-
 end
