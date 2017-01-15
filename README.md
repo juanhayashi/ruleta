@@ -6,6 +6,8 @@ Debido a las limitaciones de 'Heroku Scheduler', el proceso que inicia una nueva
 
 Para la correcta ejecución, se sugiere utilizar el ambiente de desarrollo local en 'development'.
 
+La vista para ver a los jugadores se encuentra en [Vista Jugadores](https://ruleta-nnodes.herokuapp.com/players).
+
 # Instrucciones de instalacion
   1. En terminal de linux ingresar al directorio del proyecto
   
